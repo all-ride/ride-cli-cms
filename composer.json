@@ -11,7 +11,7 @@
     ],
     "require": {
         "ride/lib-cli": ">=0.1.0",
-        "ride/lib-cms": ">=0.1.0"
+        "ride/lib-cms": ">=0.10.18"
     },
     "autoload": {
         "psr-0": {
