@@ -1,0 +1,14 @@
+{
+    "commands": [
+        {
+            "name": "cms clean up",
+            "aliases": "ccu",
+            "class": "ride\\cli\\command\\cms\\CleanUpCommand"
+        },
+        {
+            "name": "cms sitemap",
+            "aliases": "csm",
+            "class": "ride\\cli\\command\\cms\\SiteMapCommand"
+        }
+    ]
+}
