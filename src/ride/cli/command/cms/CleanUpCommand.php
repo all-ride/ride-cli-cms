@@ -2,30 +2,47 @@
 
 namespace ride\cli\command\cms;
 
-use ride\library\cli\command\AbstractCommand;
+use ride\cli\command\AbstractCommand;
+
 use ride\library\cms\node\NodeModel;
+use ride\library\StringHelper;
 
 /**
- * Command to clean up unused properties
+ * Command to clean up unused properties of CMS nodes
  */
 class CleanUpCommand extends AbstractCommand {
 
     /**
-     * Constructs a new database command
+     * Initializes the CMS clean up command
      * @return null
      */
-    public function __construct(NodeModel $nodeModel) {
-        parent::__construct('cms clean up', 'Cleans up all properties and widget instances of unused widgets');
+    protected function initialize() {
+        $this->setDescription('Cleans up all properties and widget instances of unused widgets');
 
-        $this->nodeModel = $nodeModel;
+        $this->addFlag('force', 'Add the force flag to actually remove the unused properties');
     }
 
     /**
      * Executes the command
+     * @param \ride\library\cms\node\NodeModel $nodeModel
+     * @param boolean $force
      * @return null
      */
-    public function execute() {
-        $this->nodeModel->cleanUp();
+    public function invoke(NodeModel $nodeModel, $force = false) {
+        $removedKeys = $nodeModel->cleanUp($force);
+
+        foreach ($removedKeys as $siteId => $nodes) {
+            $this->output->writeLine($siteId);
+            $this->output->writeLine(str_repeat('=', strlen($siteId)));
+
+            foreach ($nodes as $nodeId => $properties) {
+                $this->output->writeLine('- ' . $nodeId);
+
+                foreach ($properties as $key => $value) {
+                    $this->output->writeLine('    - ' . $key . ' = ' . StringHelper::truncate($value));
+                }
+            }
+        }
     }
 
 }

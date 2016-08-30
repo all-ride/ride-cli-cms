@@ -1,9 +1,23 @@
 {
     "dependencies": [
         {
-            "interfaces": "ride\\library\\cli\\command\\Command",
-            "class": "ride\\cli\\command\\cms\\CleanUpCommand",
-            "id": "cms.clean.up"
+            "class": "ride\\cli\\command\\cms\\SiteMapCommand",
+            "id": "cms.sitemap",
+            "calls": [
+                {
+                    "method": "setSiteMapDirectory",
+                    "arguments": [
+                        {
+                            "name": "siteMapDirectory",
+                            "type": "dependency",
+                            "properties": {
+                                "interface": "ride\\library\\system\\file\\File",
+                                "id": "cms.sitemap"
+                            }
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
