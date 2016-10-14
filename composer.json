@@ -2,7 +2,6 @@
     "name": "ride/cli-cms",
     "description": "CMS commands for the Ride CLI",
     "license": "MIT",
-    "version": "0.2.0",
     "authors": [
         {
             "name": "Joris Vandeweerd",
@@ -10,8 +9,11 @@
         }
     ],
     "require": {
-        "ride/lib-cli": "~1.0.0",
-        "ride/lib-cms": ">=0.30.0"
+        "ride/app": "^1.0.0",
+        "ride/cli": "^1.0.0",
+        "ride/lib-cli": "^1.0.0",
+        "ride/lib-cms": "^1.0.0",
+        "ride/web-cms": "^1.0.0"
     },
     "autoload": {
         "psr-0": {
