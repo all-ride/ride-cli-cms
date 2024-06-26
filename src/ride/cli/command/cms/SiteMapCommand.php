@@ -15,6 +15,8 @@ use ride\library\system\file\File;
  */
 class SiteMapCommand extends AbstractCommand {
 
+    protected $siteMapDirectory;
+
     /**
      * Initializes this command
      * @return null
